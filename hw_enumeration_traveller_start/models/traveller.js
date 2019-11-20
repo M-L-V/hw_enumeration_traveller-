@@ -28,19 +28,32 @@ Traveller.prototype.getJourneysByTransport = function (transport) {
 
 
 
-
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
-
+  const result = this.journeys.filter( (journey) => {
+    return journey.distance > minDistance;
+  });
+  return result
 };
 
 
+// Traveller.prototype.calculateTotalDistanceTravelled = function () {
+//     return this.journeys.reduce((totaldistance, distance) => {
+//       return totaldistance += journey.distance;
+//     }, 0);
+// };
 
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
+    const distances = this.journeys.map( (journey) => {
+      return journey.distance
+    });
+    const result = distances.reduce( (totaldistance, distance) => {
+      return totaldistance + distance;
+    });
+
+  return result;
 
 };
-
-
 
 
 
